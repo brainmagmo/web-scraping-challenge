@@ -12,7 +12,7 @@ def index():
 	client = pymongo.MongoClient(conn)
 	db = client.mars
 	data = db.data
-	return render_template("index.html", mars = data.find_many())
+	return render_template("index.html", mars_data = data.find_one())
 	
 @app.route("/scrape")
 def scrape_page():
@@ -21,7 +21,7 @@ def scrape_page():
 	client = pymongo.MongoClient(conn)
 	db = client.mars
 	data = db.data
-	data.update_many({}, new_data, upsert=True)
+	data.update({}, new_data, upsert=True)
 	return redirect("/", code=302)
 	
 
