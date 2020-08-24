@@ -46,7 +46,7 @@ def scrape():
 		time.sleep(5)
 		hemi_soup = BeautifulSoup(browser.html, 'html.parser')
 		downlows = hemi_soup.find('div',class_='downloads')
-		dct['img_url'] = downlows.find_all('a')[1]['href']
+		dct['img_url'] = downlows.find_all('a')[0]['href']
 	#output
 	scraped_dict = {
 		'news_title':news_title,
